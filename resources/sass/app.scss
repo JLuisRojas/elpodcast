@@ -6,3 +6,39 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Media queryies
+@import 'media';
+
+body {
+  color: $main-font-color;
+  background-color: white;
+}
+
+#app {
+  padding: 0px 3%;
+
+  @include gt-sm {
+    padding: 0px 5%;
+  }
+
+  @include gt-md {
+    padding: 0px 10%;
+  }
+}
+
+.container {
+  padding: 0px;
+}
+
+.app-title {
+  font-size: $app-title-font-size;
+}
+
+.nav-link {
+  font-size: 16px;
+}
+
+.section-title {
+  font-size: $section-font-size;
+}
