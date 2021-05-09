@@ -10,6 +10,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script>
+        window.User = {
+            id: {{ optional(auth()->user())->id }}
+        }
+    </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -41,7 +46,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Creadores</a>
+                            <a class="nav-link" href="{{ route('creator') }}">Creadores</a>
                         </li>
                     </ul>
 

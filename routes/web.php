@@ -18,3 +18,4 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/creator', [App\Http\Controllers\CreatorController::class, 'index'])->name('creator');
