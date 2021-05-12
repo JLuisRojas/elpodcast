@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         newPodcast() {
-            console.log("New pocast");
+            window.location.href = "/creator/newPodcast";
         },
     }
 }

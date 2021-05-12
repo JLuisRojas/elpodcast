@@ -21,6 +21,7 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.prototype.$user = window.User
+Vue.prototype.$asset = window._asset;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
@@ -30,6 +31,9 @@ Vue.component('become-creator', require('./components/BecomeCreator.vue').defaul
 
 Vue.component('my-podcasts', require('./components/MyPodcasts.vue').default);
 
+Vue.component('new-podcast', require('./components/NewPodcast.vue').default);
+
+Vue.component('text-input', require('./components/TextInput.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

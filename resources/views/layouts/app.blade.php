@@ -14,6 +14,8 @@
         window.User = {
             id: {{ optional(auth()->user())->id }}
         }
+
+        window._asset = '{{ asset('') }}';
     </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -27,7 +29,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
             <div class="container">
                 <a class="navbar-brand d-flex app-title" href="{{ url('/') }}">
-                    <div><img src="logo.png" style="height: 30px;" class="pr-2"></div>
+                    <div><img src="{{ asset('logo.png') }}" style="height: 30px;" class="pr-2"></div>
                     <div>elpodcast.</div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

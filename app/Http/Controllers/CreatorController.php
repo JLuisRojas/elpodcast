@@ -21,4 +21,9 @@ class CreatorController extends Controller
         else
             return view('creators.become');
     }
+
+    public function newPodcast()
+    {
+        return view('creators.newPodcast');
+    }
 }
