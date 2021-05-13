@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PodcastController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/creator/{id}', [UserController::class, 'becomeCreator']);
+Route::prefix('/creator')->group(function() {
+    Route::post('/{id}', [UserController::class, 'becomeCreator']);
+    Route::post('/{id}/podcast', [PodcastController::class, 'store']);
+});
 
 Route::prefix('/podcasts')->group(function() {
     Route::get('/categories', [CategoryController::class, 'index']);

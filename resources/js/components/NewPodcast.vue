@@ -65,12 +65,14 @@
                     :options="options"
                 ></select-input>
 
-                <p v-if="errors.length">
-                    <b>Please correct the following error(s):</b>
+                <div v-if="errorsForm.length" 
+                    class="d-flex align-items-end flex-column">
+                    <b>Favor de corregir los siguientes errores:</b>
                     <ul>
-                      <li :v-for="error in errors">{{ error }}</li>
+                      <li v-for="e in errorsForm" :key="e.message"
+                        >{{ e.message }}</li>
                     </ul>
-                </p>
+                </div>
 
                 <div class="d-flex flex-row-reverse">
                     <fill-button :onClick="submit">Crear Podcast</fill-button>
@@ -103,7 +105,8 @@ export default {
             selected: 1,
             options: [],
             hasImg: false,
-            errors: [],
+            errorsForm: [],
+            file: null,
         }
     },
     created() {
@@ -128,6 +131,8 @@ export default {
                 }
 
                 this.options = categoriesData;
+
+                this.selected = this.options[0].value;
             });
         },
         selectFile() {
@@ -135,24 +140,88 @@ export default {
         },
         onFileChange(e) {
             if(e.target.files && e.target.files[0]) {
-                const file = e.target.files[0];
-                this.imgPath = URL.createObjectURL(file);
+                this.file = e.target.files[0];
+                this.imgPath = URL.createObjectURL(this.file);
 
                 this.hasImg = true;
             }
         },
         submit() {
-            console.log("Hola");
+            let newErrors = [];
+
+            if(this.title == "")
+                newErrors.push({
+                    message: "Falta el titulo del podcast",
+                });
+
+            if(this.hosts == "")
+                newErrors.push({
+                    message: "Falta los anfitriones del podcast",
+                });
+
+            if(this.longDescription == "")
+                newErrors.push({
+                    message: "Falta la descripción larga del podcast",
+                });
+
+            if(this.shortDescription == "")
+                newErrors.push({
+                    message: "Falta la descripción corta del podcast",
+                });
+
+            if(this.file == null)
+                newErrors.push({
+                    message: "Falta seleccionar la imagen del podcast"
+                });
+
+            this.errorsForm = newErrors;
+
             console.log(this.title);
+            console.log(this.hosts);
             console.log(this.longDescription);
             console.log(this.shortDescription);
             console.log(this.selected);
+
+            if(this.errorsForm.length == 0) {
+                let formData = new FormData();
+
+                formData.append('file', this.file);
+                formData.append('title', this.title);
+                formData.append('hosts', this.hosts);
+                formData.append('shortDescription', this.shortDescription);
+                formData.append('longDescription', this.longDescription);
+                formData.append('category', this.selected);
+                formData.append('user', this.$user.id);
+
+                axios.post(
+                    `/api/creator/${this.$user.id}/podcast`,
+                    formData, {
+                        headers: {
+                          'Content-Type': 'multipart/form-data'
+                        }
+                    }
+                ).then(function () {
+                    console.log('SUCCESS!!');
+                })
+                .catch(function (e) {
+                    console.log('FAILURE!!');
+                    console.log(e.response);
+                    console.log(e.request);
+                    console.log(e.message);
+                });
+            }
         },
     }
 }
 </script>
 
 <style scoped>
+    ul {
+        list-style-type: none;
+        text-align: right;
+        color: red;
+    }
+
     .img-preview {
         max-width: 100%;
         padding-bottom: 20px;

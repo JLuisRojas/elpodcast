@@ -2084,6 +2084,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 
 
 
@@ -2105,7 +2107,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       selected: 1,
       options: [],
       hasImg: false,
-      errors: []
+      errorsForm: [],
+      file: null
     };
   },
   created: function created() {
@@ -2141,6 +2144,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
 
         _this.options = categoriesData;
+        _this.selected = _this.options[0].value;
       });
     },
     selectFile: function selectFile() {
@@ -2148,17 +2152,57 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     onFileChange: function onFileChange(e) {
       if (e.target.files && e.target.files[0]) {
-        var file = e.target.files[0];
-        this.imgPath = URL.createObjectURL(file);
+        this.file = e.target.files[0];
+        this.imgPath = URL.createObjectURL(this.file);
         this.hasImg = true;
       }
     },
     submit: function submit() {
-      console.log("Hola");
+      var newErrors = [];
+      if (this.title == "") newErrors.push({
+        message: "Falta el titulo del podcast"
+      });
+      if (this.hosts == "") newErrors.push({
+        message: "Falta los anfitriones del podcast"
+      });
+      if (this.longDescription == "") newErrors.push({
+        message: "Falta la descripción larga del podcast"
+      });
+      if (this.shortDescription == "") newErrors.push({
+        message: "Falta la descripción corta del podcast"
+      });
+      if (this.file == null) newErrors.push({
+        message: "Falta seleccionar la imagen del podcast"
+      });
+      this.errorsForm = newErrors;
       console.log(this.title);
+      console.log(this.hosts);
       console.log(this.longDescription);
       console.log(this.shortDescription);
       console.log(this.selected);
+
+      if (this.errorsForm.length == 0) {
+        var formData = new FormData();
+        formData.append('file', this.file);
+        formData.append('title', this.title);
+        formData.append('hosts', this.hosts);
+        formData.append('shortDescription', this.shortDescription);
+        formData.append('longDescription', this.longDescription);
+        formData.append('category', this.selected);
+        formData.append('user', this.$user.id);
+        axios.post("/api/creator/".concat(this.$user.id, "/podcast"), formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(function () {
+          console.log('SUCCESS!!');
+        })["catch"](function (e) {
+          console.log('FAILURE!!');
+          console.log(e.response);
+          console.log(e.request);
+          console.log(e.message);
+        });
+      }
     }
   }
 });
@@ -6831,7 +6875,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.img-preview[data-v-b3507022] {\n    max-width: 100%;\n    padding-bottom: 20px;\n}\n.input-field[data-v-b3507022] {\n    padding-bottom: 10px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-b3507022] {\n    list-style-type: none;\n    text-align: right;\n    color: red;\n}\n.img-preview[data-v-b3507022] {\n    max-width: 100%;\n    padding-bottom: 20px;\n}\n.input-field[data-v-b3507022] {\n    padding-bottom: 10px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38932,15 +38976,19 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _vm.errors.length
-            ? _c("p", [
-                _c("b", [_vm._v("Please correct the following error(s):")]),
+          _vm.errorsForm.length
+            ? _c("div", { staticClass: "d-flex align-items-end flex-column" }, [
+                _c("b", [_vm._v("Favor de corregir los siguientes errores:")]),
                 _vm._v(" "),
-                _c("ul", [
-                  _c("li", { attrs: { "v-for": _vm.error in _vm.errors } }, [
-                    _vm._v(_vm._s(_vm.error))
-                  ])
-                ])
+                _c(
+                  "ul",
+                  _vm._l(_vm.errorsForm, function(e) {
+                    return _c("li", { key: e.message }, [
+                      _vm._v(_vm._s(e.message))
+                    ])
+                  }),
+                  0
+                )
               ])
             : _vm._e(),
           _vm._v(" "),
