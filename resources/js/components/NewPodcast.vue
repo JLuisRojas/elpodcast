@@ -101,26 +101,34 @@ export default {
             longDescription: "",
             shortDescription: "",
             selected: 1,
-            options: [
-                {
-                    text: "Tecnologia",
-                    value: 1,
-                },
-                {
-                    text: "Filosofia",
-                    value: 2,
-                }
-            ],
+            options: [],
             hasImg: false,
             errors: [],
         }
     },
     created() {
         this.loadImg();
+        this.loadCategories();
     },
     methods: {
         loadImg() {
             this.imgPath = this.$asset + "/no-image.png";
+        },
+        loadCategories() {
+            axios.get('/api/podcasts/categories').then((r) => {
+                const data = r.data;
+
+                let categoriesData = [];
+
+                for(var category of data) {
+                    categoriesData.push({
+                        text: category.name,
+                        value: category.id,
+                    });
+                }
+
+                this.options = categoriesData;
+            });
         },
         selectFile() {
             $('#file-input').trigger('click');
