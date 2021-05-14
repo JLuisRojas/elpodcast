@@ -39,6 +39,8 @@ Vue.component('text-input', require('./components/TextInput.vue').default);
 
 Vue.component('select-input', require('./components/SelectInput.vue').default);
 
+Vue.component('podcast-row', require('./components/PodcastRow.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

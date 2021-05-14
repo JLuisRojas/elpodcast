@@ -25,6 +25,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('/creator')->group(function() {
     Route::post('/{id}', [UserController::class, 'becomeCreator']);
     Route::post('/{id}/podcast', [PodcastController::class, 'store']);
+    Route::get('/{id}/podcast', [PodcastController::class, 'queryCreator']);
 });
 
 Route::prefix('/podcasts')->group(function() {

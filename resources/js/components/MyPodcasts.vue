@@ -1,29 +1,60 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="section-title" style="max-width: 60%">
+        <div class="row justify-content-between">
+            <div class="col section-title" style="max-width: 60%">
                 Mis Podcasts
             </div>
-        </div>
-        <div class="row justify-content-center py-3">
-            <div class="text-center">
-                No tienes Podcasts, crea uno para empezar a compartir tus ideas.
+            <div class="col-auto">
+                <div v-if="podcasts.length != 0">
+                    <outline-button :onClick="newPodcast">Nuevo</outline-button>
+                </div>
             </div>
         </div>
-        <div class="row justify-content-center py-2">
-            <fill-button :onClick="newPodcast">Crear Podcast</fill-button>
+        <div v-if="podcasts.length == 0">
+            <div class="row justify-content-center py-3">
+                <div class="text-center">
+                    No tienes Podcasts, crea uno para empezar a compartir tus ideas.
+                </div>
+            </div>
+            <div class="row justify-content-center py-2">
+                <fill-button :onClick="newPodcast">Crear Podcast</fill-button>
+            </div>
+        </div>
+        <div v-else>
+            <div v-for="podcast in podcasts" v-bind:key="podcast" class="pods">
+                <podcast-row :podcast="podcast"></podcast-row>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import FillButton from "./FillButton"
+import OutlineButton from './OutlineButton.vue';
+import PodcastRow from './PodcastRow.vue';
 
 export default {
     components: {
         FillButton,
+        OutlineButton,
+        PodcastRow,
+    },
+    data: () => {
+        return {
+            podcasts: [], 
+        }
+    },
+    created() {
+        this.loadPodcasts();
     },
     methods: {
+        loadPodcasts() {
+            axios.get(`/api/creator/${this.$user.id}/podcast`).then((r) => {
+                const data = r.data;
+
+                this.podcasts = data;
+            });
+        },
         newPodcast() {
             window.location.href = "/creator/newPodcast";
         },
@@ -32,5 +63,7 @@ export default {
 </script>
 
 <style>
-
+    .pods {
+        padding-top: 30px;
+    }
 </style>

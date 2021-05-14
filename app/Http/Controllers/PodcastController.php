@@ -17,14 +17,13 @@ class PodcastController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function queryCreator(Request $request, $id) 
     {
-        //
+        $podcasts = Podcast::where('user_id', $id)
+            ->with('category')
+            ->get();
+
+        return $podcasts;
     }
 
     /**

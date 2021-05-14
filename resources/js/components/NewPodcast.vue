@@ -202,6 +202,7 @@ export default {
                     }
                 ).then(function () {
                     console.log('SUCCESS!!');
+                    window.location.href = "/creator";
                 })
                 .catch(function (e) {
                     console.log('FAILURE!!');
