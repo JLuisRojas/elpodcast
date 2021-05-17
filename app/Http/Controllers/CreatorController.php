@@ -26,4 +26,9 @@ class CreatorController extends Controller
     {
         return view('creators.newPodcast');
     }
+
+    public function editPodcast()
+    {
+        return view('creators.editPodcast');
+    }
 }

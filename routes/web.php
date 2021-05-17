@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CreatorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +20,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
-Route::get(
-    '/creator', [App\Http\Controllers\CreatorController::class, 'index']
-)->name('creator');
+Route::prefix('/creator')->group(function() {
+    Route::get('', [CreatorController::class, 'index'])->name('creator');
+    Route::get('/newPodcast', [CreatorController::class, 'newPodcast']);
 
-Route::get(
-    '/creator/newPodcast', 
-    [App\Http\Controllers\CreatorController::class, 'newPodcast']
-)->name('newPodcast');
+    Route::prefix('/podcast/{id}')->group(function() {
+        Route::get('', [CreatorController::class, 'editPodcast']);
+    });
+});

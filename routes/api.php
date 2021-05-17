@@ -30,4 +30,5 @@ Route::prefix('/creator')->group(function() {
 
 Route::prefix('/podcasts')->group(function() {
     Route::get('/categories', [CategoryController::class, 'index']);
+    Route::get('/{id}', [PodcastController::class, 'getPodcast']);
 });

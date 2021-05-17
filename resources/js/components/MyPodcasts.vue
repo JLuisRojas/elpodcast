@@ -24,7 +24,7 @@
             <div v-for="podcast in podcasts" v-bind:key="podcast.id" class="pods">
                 <podcast-row 
                     :podcast="podcast"
-                    :primary="{ onTap: () => hola(podcast.id), title: 'Editar' }"
+                    :primary="{ onTap: () => goEdit(podcast.id), title: 'Editar' }"
                     :secondary="{ onTap: () => hola(podcast.id), title: 'Ir a Podcast' }"
                 ></podcast-row>
             </div>
@@ -48,23 +48,24 @@ export default {
             podcasts: null, 
         }
     },
-    created() {
-        this.loadPodcasts();
+    async created() {
+        await this.loadPodcasts();
     },
     methods: {
-        loadPodcasts() {
-            axios.get(`/api/creator/${this.$user.id}/podcast`).then((r) => {
-                const data = r.data;
+        async loadPodcasts() {
+            const res = await axios.get(`/api/creator/${this.$user.id}/podcast`);
 
-                this.podcasts = data;
-            });
+            this.podcasts = res.data;
         },
         newPodcast() {
             window.location.href = "/creator/newPodcast";
         },
         hola(id) {
             console.log(id);
-        }
+        },
+        goEdit(id) {
+            window.location.href = `/creator/podcast/${id}`;
+        },
     }
 }
 </script>

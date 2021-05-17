@@ -26,6 +26,15 @@ class PodcastController extends Controller
         return $podcasts;
     }
 
+    public function getPodcast(Request $request, $id) 
+    {
+        $podcasts = Podcast::find($id)
+            ->with('category')
+            ->get();
+
+        return $podcasts[0];
+    }
+
     /**
      * Store a newly created resource in storage.
      *
