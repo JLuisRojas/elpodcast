@@ -5,12 +5,12 @@
                 Mis Podcasts
             </div>
             <div class="col-auto">
-                <div v-if="podcasts.length != 0">
+                <div v-if="podcasts != null && podcasts.length !== 0">
                     <outline-button :onClick="newPodcast">Nuevo</outline-button>
                 </div>
             </div>
         </div>
-        <div v-if="podcasts.length == 0">
+        <div v-if="podcasts != null && podcasts.length === 0">
             <div class="row justify-content-center py-3">
                 <div class="text-center">
                     No tienes Podcasts, crea uno para empezar a compartir tus ideas.
@@ -21,8 +21,12 @@
             </div>
         </div>
         <div v-else>
-            <div v-for="podcast in podcasts" v-bind:key="podcast" class="pods">
-                <podcast-row :podcast="podcast"></podcast-row>
+            <div v-for="podcast in podcasts" v-bind:key="podcast.id" class="pods">
+                <podcast-row 
+                    :podcast="podcast"
+                    :primary="{ onTap: () => hola(podcast.id), title: 'Editar' }"
+                    :secondary="{ onTap: () => hola(podcast.id), title: 'Ir a Podcast' }"
+                ></podcast-row>
             </div>
         </div>
     </div>
@@ -41,7 +45,7 @@ export default {
     },
     data: () => {
         return {
-            podcasts: [], 
+            podcasts: null, 
         }
     },
     created() {
@@ -58,6 +62,9 @@ export default {
         newPodcast() {
             window.location.href = "/creator/newPodcast";
         },
+        hola(id) {
+            console.log(id);
+        }
     }
 }
 </script>

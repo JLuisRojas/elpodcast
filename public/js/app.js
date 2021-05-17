@@ -1981,6 +1981,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -1992,7 +1996,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      podcasts: []
+      podcasts: null
     };
   },
   created: function created() {
@@ -2009,6 +2013,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     newPodcast: function newPodcast() {
       window.location.href = "/creator/newPodcast";
+    },
+    hola: function hola(id) {
+      console.log(id);
     }
   }
 });
@@ -2316,6 +2323,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2324,8 +2335,10 @@ __webpack_require__.r(__webpack_exports__);
     OutlineButton: _OutlineButton_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
   props: ['podcast', 'primary', 'secondary'],
-  data: {
-    imgPath: ""
+  data: function data() {
+    return {
+      imgPath: ""
+    };
   },
   created: function created() {
     this.imgPath = this.$asset + "storage/podcasts/" + this.podcast.image;
@@ -39068,7 +39081,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-auto" }, [
-        _vm.podcasts.length != 0
+        _vm.podcasts != null && _vm.podcasts.length !== 0
           ? _c(
               "div",
               [
@@ -39082,7 +39095,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm.podcasts.length == 0
+    _vm.podcasts != null && _vm.podcasts.length === 0
       ? _c("div", [
           _vm._m(0),
           _vm._v(" "),
@@ -39102,8 +39115,26 @@ var render = function() {
           _vm._l(_vm.podcasts, function(podcast) {
             return _c(
               "div",
-              { key: podcast, staticClass: "pods" },
-              [_c("podcast-row", { attrs: { podcast: podcast } })],
+              { key: podcast.id, staticClass: "pods" },
+              [
+                _c("podcast-row", {
+                  attrs: {
+                    podcast: podcast,
+                    primary: {
+                      onTap: function() {
+                        return _vm.hola(podcast.id)
+                      },
+                      title: "Editar"
+                    },
+                    secondary: {
+                      onTap: function() {
+                        return _vm.hola(podcast.id)
+                      },
+                      title: "Ir a Podcast"
+                    }
+                  }
+                })
+              ],
               1
             )
           }),
@@ -39401,7 +39432,19 @@ var render = function() {
               ? _c(
                   "div",
                   { staticClass: "pod-op" },
-                  [_c("fill-button", [_vm._v("Reproducir")])],
+                  [
+                    _c(
+                      "fill-button",
+                      { attrs: { onClick: _vm.primary.onTap } },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(_vm.primary.title) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  ],
                   1
                 )
               : _vm._e(),
@@ -39410,7 +39453,19 @@ var render = function() {
               ? _c(
                   "div",
                   { staticClass: "pod-op" },
-                  [_c("outline-button", [_vm._v("Subscribir")])],
+                  [
+                    _c(
+                      "outline-button",
+                      { attrs: { onClick: _vm.secondary.onTap } },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(_vm.secondary.title) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  ],
                   1
                 )
               : _vm._e()

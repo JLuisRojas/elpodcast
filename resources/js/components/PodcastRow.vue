@@ -24,10 +24,14 @@
                 style="height: 100%;"
             >
                 <div v-if="primary" class="pod-op">
-                    <fill-button>Reproducir</fill-button>
+                    <fill-button :onClick="primary.onTap">
+                        {{ primary.title }}
+                    </fill-button>
                 </div>
                 <div v-if="secondary" class="pod-op">
-                    <outline-button>Subscribir</outline-button>
+                    <outline-button :onClick="secondary.onTap">
+                        {{ secondary.title }}
+                    </outline-button>
                 </div>
             </div>
         </div>
@@ -40,8 +44,10 @@ import OutlineButton from './OutlineButton.vue';
 export default {
   components: { FillButton, OutlineButton },
     props: ['podcast', 'primary', 'secondary'],
-    data: {
-        imgPath: "",
+    data: () => {
+        return {
+            imgPath: "",
+        }
     },
     created() {
         this.imgPath = this.$asset + "storage/podcasts/" + this.podcast.image;
