@@ -16,7 +16,7 @@
             </div>
             <div class="col-auto">
                 <div v-if="episodes != null && episodes.length !== 0">
-                    <outline-button :onClick="newEpisode">Nuevo</outline-button>
+                    <fill-button :onClick="newEpisode">Nuevo</fill-button>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="row justify-content-center py-2">
-                <outline-button :onClick="newEpisode">Nuevo Episodio</outline-button>
+                <fill-button :onClick="newEpisode">Nuevo Episodio</fill-button>
             </div>
         </div>
         <div v-else>
@@ -39,7 +39,9 @@
 </template>
 
 <script>
+import FillButton from './FillButton.vue';
 export default {
+  components: { FillButton },
     data: () => {
         return {
             podcastId: null,
@@ -72,25 +74,11 @@ export default {
             this.episodes = [];
         },
         newEpisode() {
-            console.log("New episode");
+            window.location.href += '/episode';
         },
     },
 }
 </script>
 
 <style scoped>
-    a {
-        color: black;
-    }
-    .context {
-        color: black;
-        font-size: 16px;
-        font-weight: bold;
-        padding-bottom: 15px;
-    }
-
-    .context-title {
-        color: grey;
-        padding-left: 5px;
-    }
 </style>

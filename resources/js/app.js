@@ -43,6 +43,10 @@ Vue.component('podcast-row', require('./components/PodcastRow.vue').default);
 
 Vue.component('edit-podcast', require('./components/EditPodcast.vue').default);
 
+Vue.component('new-episode', require('./components/NewEpisode.vue').default);
+
+Vue.component('drop-file', require('./components/DropFile.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

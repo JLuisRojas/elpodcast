@@ -31,13 +31,6 @@ export default {
 </script>
 
 <style scoped>
-
-.title-text {
-    padding-bottom: 5px;
-    font-size: 14px;
-    color: gray;
-}
-
 .text-input {
     border: 1px solid lightgray;
     border-radius: 1px;

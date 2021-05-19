@@ -55,3 +55,28 @@ body {
 .section-title {
   font-size: $section-font-size;
 }
+
+.title-text {
+  padding-bottom: 5px;
+  font-size: 14px;
+  color: gray;
+}
+
+a {
+  color: grey;
+}
+.context {
+  color: grey;
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.context-title {
+  color: black;
+  padding-left: 5px;
+}
+
+.context-item {
+  padding-left: 5px;
+}

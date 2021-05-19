@@ -27,6 +27,11 @@ class CreatorController extends Controller
         return view('creators.newPodcast');
     }
 
+    public function newEpisode()
+    {
+        return view('creators.newEpisode');
+    }
+
     public function editPodcast()
     {
         return view('creators.editPodcast');
