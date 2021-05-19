@@ -2436,6 +2436,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       imgPath: "",
       title: "",
       description: "",
+      audio: null,
       file: null,
       hasImg: false,
       errorsForm: [],
@@ -2498,12 +2499,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       $('#file-input').trigger('click');
     },
     onSelectedAudio: function onSelectedAudio(files) {
-      console.log(files);
+      if (files.length > 0) {
+        this.audio = files[0];
+      }
     },
     onFileChange: function onFileChange(e) {
       if (e.target.files && e.target.files[0]) {
-        this.file = e.target.files[0];
-        this.imgPath = URL.createObjectURL(this.file);
+        this.image = e.target.files[0];
+        this.imgPath = URL.createObjectURL(this.image);
         this.hasImg = true;
       }
     },
@@ -2518,11 +2521,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (this.description == "") newErrors.push({
         message: "Falta la descripción del episodio"
       });
+      if (this.audio == null) newErrors.push({
+        message: "Falta seleccionar el audio del episodio"
+      });
       this.errorsForm = newErrors;
       console.log(this.title);
       console.log(this.description);
 
-      if (this.errorsForm.length == 0) {// let formData = new FormData();
+      if (this.errorsForm.length == 0) {
+        var formData = new FormData();
+        formData.append('podcastId', this.podcast.id);
+        if (this.image != null) formData.append('image', this.image);
+        formData.append('audio', this.audio);
+        formData.append('title', this.title);
+        formData.append('description', this.description);
+        axios.post("/api/podcasts/".concat(this.podcast.id, "/episode"), formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(function () {
+          console.log('SUCCESS!!');
+          window.location.href = "/creator";
+        })["catch"](function (e) {
+          console.log('FAILURE!!');
+          console.log(e.response);
+          console.log(e.request);
+          console.log(e.message);
+        });
       }
     }
   }

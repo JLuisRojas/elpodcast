@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PodcastController;
+use App\Http\Controllers\EpisodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,9 @@ Route::prefix('/creator')->group(function() {
 
 Route::prefix('/podcasts')->group(function() {
     Route::get('/categories', [CategoryController::class, 'index']);
-    Route::get('/{id}', [PodcastController::class, 'getPodcast']);
+
+    Route::prefix('/{id}')->group(function() {
+        Route::get('', [PodcastController::class, 'getPodcast']);
+        Route::post('/episode', [EpisodeController::class, 'store']);
+    });
 });
