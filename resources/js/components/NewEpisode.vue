@@ -2,7 +2,7 @@
     <div v-if="podcast != null" class="container">
         <div class="d-flex context">
             <a href="/creator">{{'Mis Podcasts  >'}}</a>
-            <a href="/creator" class="context-item"> {{podcast.title + ' >'}}</a>
+            <a :href="'/creator/podcast/' + podcast.id" class="context-item"> {{podcast.title + ' >'}}</a>
             <div class="context-title">Nuevo</div>
         </div>
         <div class="row">
@@ -168,7 +168,7 @@ export default {
                 formData.append('description', this.description);
 
                 axios.post(
-                    `/api/podcasts/${this.podcast.id}/episode`,
+                    `/api/podcasts/${this.podcast.id}/episodes`,
                     formData, {
                         headers: {
                           'Content-Type': 'multipart/form-data'

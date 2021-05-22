@@ -31,17 +31,24 @@
                 <fill-button :onClick="newEpisode">Nuevo Episodio</fill-button>
             </div>
         </div>
-        <div v-else>
-            pods
+        <div v-else class="d-flex flex-wrap">
+            <div class='episode-card' v-for="(episode, index) in episodes" :key="episode.id">
+              <creator-episode-card 
+                :podcastId="podcastId"
+                :episode="episode" 
+                :index="episodes.length - index"
+              ></creator-episode-card>
+            </div>
         </div>
       </div>
   </div>
 </template>
 
 <script>
+import CreatorEpisodeCard from './CreatorEpisodeCard.vue';
 import FillButton from './FillButton.vue';
 export default {
-  components: { FillButton },
+  components: { FillButton, CreatorEpisodeCard },
     data: () => {
         return {
             podcastId: null,
@@ -53,7 +60,6 @@ export default {
         this.parseUrl();
 
         await this.fetchPodcast();
-        this.fetchEpisodes();
     },
     methods: {
         parseUrl() {
@@ -64,14 +70,11 @@ export default {
             this.podcastId = elements[elements.length - 1];
         },
         async fetchPodcast() {
-            const res = await axios.get(`/api/podcasts/${this.podcastId}`);
+            const res = await axios.get(`/api/podcasts/${this.podcastId}/episodes`);
 
             this.podcast = res.data;
 
-            console.log(this.podcast);
-        },
-        fetchEpisodes() {
-            this.episodes = [];
+            this.episodes = this.podcast.episodes.reverse();
         },
         newEpisode() {
             window.location.href += '/episode';
@@ -81,4 +84,8 @@ export default {
 </script>
 
 <style scoped>
+  .episode-card {
+    width: 25%;
+    padding-bottom: 25px;
+  }
 </style>

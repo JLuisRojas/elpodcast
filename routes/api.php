@@ -34,6 +34,8 @@ Route::prefix('/podcasts')->group(function() {
 
     Route::prefix('/{id}')->group(function() {
         Route::get('', [PodcastController::class, 'getPodcast']);
-        Route::post('/episode', [EpisodeController::class, 'store']);
+        Route::post('/episodes', [EpisodeController::class, 'store']);
+        Route::get('/episodes', [EpisodeController::class, 'index']);
+        Route::delete('/episodes/{ep_id}', [EpisodeController::class, 'destroy']);
     });
 });

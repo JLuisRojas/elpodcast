@@ -14,9 +14,13 @@ class EpisodeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $podcast = Podcast::find($id)
+            ->with('episodes')
+            ->get();
+
+        return $podcast[0];
     }
 
     /**
@@ -117,8 +121,8 @@ class EpisodeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $ep_id)
     {
-        //
+        return Episode::destroy($ep_id);
     }
 }
