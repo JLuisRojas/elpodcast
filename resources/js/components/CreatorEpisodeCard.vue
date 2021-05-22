@@ -47,8 +47,8 @@ export default {
         }
     },
     created() {
-        console.log(this.podcastId);
-        const date = new Date(this.episode.created_at);
+        const date = new Date(this.episode.publish_date);
+
         var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
         this.date_str = date.toLocaleString("en-US", options);

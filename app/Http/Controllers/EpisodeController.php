@@ -16,11 +16,11 @@ class EpisodeController extends Controller
      */
     public function index($id)
     {
-        $podcast = Podcast::find($id)
-            ->with('episodes')
-            ->get();
+        $podcast = Podcast::find($id);
 
-        return $podcast[0];
+        $podcast['episodes'] = $podcast->episodes;
+
+        return $podcast;
     }
 
     public function get($id, $ep_id)

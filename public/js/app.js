@@ -1960,8 +1960,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   created: function created() {
-    console.log(this.podcastId);
-    var date = new Date(this.episode.created_at);
+    var date = new Date(this.episode.publish_date);
     var options = {
       year: 'numeric',
       month: 'long',
@@ -8219,7 +8218,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-053932f6] {\n    list-style-type: none;\n    text-align: right;\n    color: red;\n}\n.img-preview[data-v-053932f6] {\n    max-width: 100%;\n    padding-bottom: 20px;\n}\n.input-field[data-v-053932f6] {\n    padding-bottom: 10px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-053932f6] {\n    list-style-type: none;\n    text-align: right;\n    color: red;\n}\n.img-preview[data-v-053932f6] {\n    width: 100%;\n    padding-bottom: 20px;\n}\n.input-field[data-v-053932f6] {\n    padding-bottom: 10px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8267,7 +8266,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-762841cd] {\n    list-style-type: none;\n    text-align: right;\n    color: red;\n}\n.img-preview[data-v-762841cd] {\n    max-width: 100%;\n    padding-bottom: 20px;\n}\n.input-field[data-v-762841cd] {\n    padding-bottom: 10px;\n}\n.title-text[data-v-762841cd] {\n    padding-bottom: 5px;\n    font-size: 14px;\n    color: gray;\n}\n.select-input[data-v-762841cd] {\n    width: 50%;\n    border: 1px solid lightgray;\n    border-radius: 1px;\n    padding: 0.5em 1em;\n    font-size: 16px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-762841cd] {\n    list-style-type: none;\n    text-align: right;\n    color: red;\n}\n.img-preview[data-v-762841cd] {\n    width: 100%;\n    padding-bottom: 20px;\n}\n.input-field[data-v-762841cd] {\n    padding-bottom: 10px;\n}\n.title-text[data-v-762841cd] {\n    padding-bottom: 5px;\n    font-size: 14px;\n    color: gray;\n}\n.select-input[data-v-762841cd] {\n    width: 50%;\n    border: 1px solid lightgray;\n    border-radius: 1px;\n    padding: 0.5em 1em;\n    font-size: 16px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8339,7 +8338,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-6261af66] {\n    list-style-type: none;\n    text-align: right;\n    color: red;\n}\n.img-preview[data-v-6261af66] {\n    max-width: 100%;\n    padding-bottom: 20px;\n}\n.input-field[data-v-6261af66] {\n    padding-bottom: 10px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-6261af66] {\n    list-style-type: none;\n    text-align: right;\n    color: red;\n}\n.img-preview[data-v-6261af66] {\n    width: 100%;\n    padding-bottom: 20px;\n}\n.input-field[data-v-6261af66] {\n    padding-bottom: 10px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8363,7 +8362,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-b3507022] {\n    list-style-type: none;\n    text-align: right;\n    color: red;\n}\n.img-preview[data-v-b3507022] {\n    max-width: 100%;\n    padding-bottom: 20px;\n}\n.input-field[data-v-b3507022] {\n    padding-bottom: 10px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nul[data-v-b3507022] {\n    list-style-type: none;\n    text-align: right;\n    color: red;\n}\n.img-preview[data-v-b3507022] {\n    width: 100%;\n    padding-bottom: 20px;\n}\n.input-field[data-v-b3507022] {\n    padding-bottom: 10px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

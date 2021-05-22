@@ -198,7 +198,7 @@ export default {
     }
 
     .img-preview {
-        max-width: 100%;
+        width: 100%;
         padding-bottom: 20px;
     }
 
