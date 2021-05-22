@@ -27,5 +27,6 @@ Route::prefix('/creator')->group(function() {
     Route::prefix('/podcast/{id}')->group(function() {
         Route::get('', [CreatorController::class, 'editPodcast']);
         Route::get('/episode', [CreatorController::class, 'newEpisode']);
+        Route::get('/edit', [CreatorController::class, 'editPodcastInfo']);
     });
 });

@@ -95,9 +95,28 @@ class PodcastController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $id_podcast)
     {
-        //
+        $podcast = Podcast::find($id_podcast);
+
+        $podcast->title = request("title");
+        $podcast->hosts = request("hosts");
+        $podcast->short_description = request("shortDescription");
+        $podcast->long_description = request("longDescription");
+        $podcast->category_id = request("category");
+
+        if($request->hasFile('file')) {
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $image_name = "podcast_" . $podcast->id. "_image." . $extension;
+
+            $file->storeAs('public/podcasts', $image_name);
+            $podcast->image = $image_name;
+        }
+
+        $podcast->save();
+
+        return $podcast;
     }
 
     /**

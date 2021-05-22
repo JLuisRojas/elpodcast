@@ -43,6 +43,8 @@ Vue.component('podcast-row', require('./components/PodcastRow.vue').default);
 
 Vue.component('edit-podcast', require('./components/EditPodcast.vue').default);
 
+Vue.component('edit-podcast-info', require('./components/EditPodcastInfo.vue').default);
+
 Vue.component('new-episode', require('./components/NewEpisode.vue').default);
 
 Vue.component('drop-file', require('./components/DropFile.vue').default);

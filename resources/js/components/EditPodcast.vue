@@ -7,7 +7,7 @@
         </div>
         <podcast-row 
             :podcast="podcast"
-            :secondary="{ onTap: () => hola(podcast.id), title: 'Editar' }"
+            :secondary="{ onTap: editInfo, title: 'Editar' }"
         ></podcast-row>
 
         <div class="row justify-content-between py-3">
@@ -79,6 +79,9 @@ export default {
         newEpisode() {
             window.location.href += '/episode';
         },
+        editInfo() {
+            window.location.href += '/edit';
+        }
     },
 }
 </script>

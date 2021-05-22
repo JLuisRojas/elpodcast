@@ -12,7 +12,7 @@
             v-on:input="$emit('input', $event.target.value)"
             :style="{
                 minHeight: minHeight
-            }"></component>
+            }">{{ isArea ? value : ''}}</component>
     </div>
 </template>
 

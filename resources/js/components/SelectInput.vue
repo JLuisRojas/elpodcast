@@ -24,6 +24,11 @@ export default {
         'title',
         'options',
     ],
+    created() {
+        console.log("VALUE");
+        console.log(this.value);
+        console.log(this.options);
+    }
 }
 </script>
 
