@@ -23,6 +23,14 @@ class EpisodeController extends Controller
         return $podcast[0];
     }
 
+    public function get($id, $ep_id)
+    {
+        $episode = Episode::find($ep_id);
+        $episode['podcast'] = $episode->podcast;
+
+        return $episode;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -110,9 +118,38 @@ class EpisodeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $ep_id)
     {
-        //
+        $episode = Episode::find($ep_id);
+        $podcast = Podcast::find($id);
+
+        $episode->title = request("title");
+        $episode->description = request("description");
+
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $image_name = "podcast_" . $podcast->id . "_episode_" . $episode->id . "_image." . $extension;
+
+            $image->storeAs('public/podcasts', $image_name);
+
+            $episode->image = $image_name;
+        } 
+
+        if($request->hasFile('audio')) {
+            $audio = $request->file('audio');
+
+            $extension = $audio->getClientOriginalExtension();
+            $audio_name = "podcast_" . $podcast->id . "_episode_" . $episode->id . "_audio." . $extension;
+
+            $audio->storeAs('public/podcasts', $audio_name);
+
+            $episode->audio = $audio_name;
+        }
+
+        $episode->save();
+
+        return $episode;
     }
 
     /**

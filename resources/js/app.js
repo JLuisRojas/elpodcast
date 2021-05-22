@@ -47,6 +47,8 @@ Vue.component('edit-podcast-info', require('./components/EditPodcastInfo.vue').d
 
 Vue.component('new-episode', require('./components/NewEpisode.vue').default);
 
+Vue.component('edit-episode', require('./components/EditEpisode.vue').default);
+
 Vue.component('drop-file', require('./components/DropFile.vue').default);
 
 Vue.component('creator-episode-card', require('./components/CreatorEpisodeCard.vue').default);

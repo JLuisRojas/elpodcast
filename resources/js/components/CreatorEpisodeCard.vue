@@ -60,7 +60,7 @@ export default {
             this.imageUrl = this.$asset + "storage/podcasts/" + this.episode.image;
         },
         editEpisode() {
-            console.log("Editing episode") 
+          window.location.href += '/episode/' + this.episode.id;
         },
         deleteEpisodeModal() {
             $('#' + this.episode.id + "-modal").modal('show')
