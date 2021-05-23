@@ -53,6 +53,8 @@ Vue.component('drop-file', require('./components/DropFile.vue').default);
 
 Vue.component('creator-episode-card', require('./components/CreatorEpisodeCard.vue').default);
 
+Vue.component('subscriptions', require('./components/Subscriptions.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

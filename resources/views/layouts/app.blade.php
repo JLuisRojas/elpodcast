@@ -44,7 +44,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Subscripciones</a>
+                            <a class="nav-link" href="{{ route('subscriptions') }}">Subscripciones</a>
                         </li>
 
                         <li class="nav-item">

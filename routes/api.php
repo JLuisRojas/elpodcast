@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\EpisodeController;
+use App\Http\Controllers\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,8 @@ Route::prefix('/podcasts')->group(function() {
         Route::get('/episodes/{ep_id}', [EpisodeController::class, 'get']);
         Route::post('/episodes/{ep_id}', [EpisodeController::class, 'update']);
     });
+});
+
+Route::prefix('/subscriptions')->group(function() {
+    Route::get('/{user_id}', [SubscriptionController::class, 'get']);
 });

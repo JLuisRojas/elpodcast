@@ -20,6 +20,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
+Route::get('/subscriptions', [App\Http\Controllers\HomeController::class, 'subscriptions'])->name('subscriptions');
+
 Route::prefix('/creator')->group(function() {
     Route::get('', [CreatorController::class, 'index'])->name('creator');
     Route::get('/newPodcast', [CreatorController::class, 'newPodcast']);
