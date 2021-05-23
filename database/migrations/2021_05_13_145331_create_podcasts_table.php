@@ -20,7 +20,7 @@ class CreatePodcastsTable extends Migration
             $table->string('title');
             $table->string('hosts');
             $table->string('short_description');
-            $table->string('long_description');
+            $table->string('long_description', 300);
             $table->string('image')->nullable();
 
             $table->timestamps();

@@ -48,5 +48,38 @@ class PodcastSeeder extends Seeder
             'long_description' => 'On Twitter at @naval.',
             'image' => 'podcast_3_image.jpg',
         ]);
+
+        // Rich Roll Podcast
+        DB::table('podcasts')->insert([
+            'user_id' => 2,
+            'category_id' => 5,
+            'hosts' => 'Rich Roll',
+            'title' => 'The Rich Roll Podcast',
+            'short_description' => 'An ultra-athlete, wellness evangelist and bestselling author Rich Roll.',
+            'long_description' => 'Each week Rich delves deep into all things wellness with some of the brightest and most forward thinking, paradigm busting minds in health, fitness, nutrition, art, entertainment, entrepreneurship & spirituality.',
+            'image' => 'podcast_4_image.jpg',
+        ]);
+
+        // The Anthropocene Reviewed
+        DB::table('podcasts')->insert([
+            'user_id' => 2,
+            'category_id' => 6,
+            'hosts' => 'John Green',
+            'title' => 'The Anthropocene Reviewed',
+            'short_description' => 'John Green reviews facets of the human-centered planet on a five-star scale.',
+            'long_description' => 'The Anthropocene is the current geological age, in which human activity has profoundly shaped the planet and its biodiversity. On The Anthropocene Reviewed, #1 New York Times bestselling author John Green (The Fault in Our Stars, Turtles All the Way Down) reviews different facets',
+            'image' => 'podcast_5_image.jpg',
+        ]);
+        
+        // La Cotorrisa
+        DB::table('podcasts')->insert([
+            'user_id' => 2,
+            'category_id' => 3,
+            'hosts' => 'Ricardo Perez y Slobotzky ',
+            'title' => 'La Cotorrisa',
+            'short_description' => 'Ricardo Perez y Slobotzky se ponen a cotorrear como siempre.',
+            'long_description' => 'Ricardo Perez y Slobotzky se ponen a cotorrear como siempre, pero ahora lo están grabando. Escuchalos todos los miercoles hablando de noticias extrañas, datos curiosos, anecdotas hilarantes y aliviana el ombligo de la semana.',
+            'image' => 'podcast_6_image.jpg',
+        ]);
     }
 }

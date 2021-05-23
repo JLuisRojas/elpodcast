@@ -210,5 +210,153 @@ class EpisodeSeeder extends Seeder
         ]);
 
         //===========================================================
+        
+        //===========================================================
+        // Rich Roll Podcast
+        
+        DB::table('episodes')->insert([
+            'podcast_id' => 4,
+            'title' => 'What does your podcast do?',
+            'description' => "Adam Skolnick and I discuss my week in Minneapolis, the future of 'cultured meat'",
+            'image' => 'podcast_4_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-04-29'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 4,
+            'title' => 'Adventure Is A Human Right: Anthony Taylor',
+            'description' => "Outdoor activist & youth educator Anthony Taylor joins me for a discussion on the transformative power of adventure",
+            'image' => 'podcast_4_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-3'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 4,
+            'title' => 'Sleep Is Non-Negotiable: Dr. Matthew Walker',
+            'description' => "Your bad sleep habits are making you sick. Neuroscientist Matthew Walker joins me to explain why sleep is integral",
+            'image' => 'podcast_4_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-10'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 4,
+            'title' => 'The Tortoise Always Beats The Hare (at Life)',
+            'description' => "Hustle culture is anathema to long-term success. To succeed long-term, slow & steady takes the prize every time.",
+            'image' => 'podcast_4_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-13'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 4,
+            'title' => 'Brogan Graham Is A Friend Hunter',
+            'description' => "Rich & November Project co-founder Brogan Graham rekindle their bromance & talk friendship.",
+            'image' => 'podcast_4_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-17'
+        ]);
+        
+        //===========================================================
+        
+        //===========================================================
+        // The Anthropocene Podcast
+        
+        DB::table('episodes')->insert([
+            'podcast_id' => 5,
+            'title' => "You'll Never Walk Alone and Jerzy Dudek",
+            'description' => "John Green reviews the song You'll Never Walk Alone",
+            'image' => 'podcast_5_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2020-05-28'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 5,
+            'title' => "Seventeen Listener Suggestions, Reviewed",
+            'description' => "John Green reviews seventeen topics suggested by listeners.",
+            'image' => 'podcast_5_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2020-06-25'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 5,
+            'title' => "Mortification and Civilization",
+            'description' => "John Green reviews mortification and civilization.",
+            'image' => 'podcast_5_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2020-07-30'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 5,
+            'title' => "The Anthropocene Reviewed, Reviewed",
+            'description' => "John Green reviews the podcast The Anthropocene Reviewed.",
+            'image' => 'podcast_5_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2020-08-27'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 5,
+            'title' => "Plague",
+            'description' => "John Green reviews historical outbreaks of bubonic and pneumonic plague",
+            'image' => 'podcast_5_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2020-09-24'
+        ]);
+
+        //===========================================================
+        
+        //===========================================================
+        // The Anthropocene Podcast
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 6,
+            'title' => "Episodio 111 - Mi mascota es una vibora de cascabel",
+            'description' => "Bienvenidos al episodio 111, donde hablamos de las anecdotas más sorprendentes que te ha pasado con tus papas.",
+            'image' => 'podcast_6_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-5'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 6,
+            'title' => "Anecdotario 89 - Nos besamos vomitados Ft. Arigameplays",
+            'description' => "Bienvenidos al anecdotario 89 de la Cotorrisa, tuvimos a una excelente gamer y amiga Arigameplays",
+            'image' => 'podcast_6_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-9'
+        ]);
+
+        db::table('episodes')->insert([
+            'podcast_id' => 6,
+            'title' => "La Cotorrisa - Episodio 112 - Grupo Marrano en la fiesta familiar",
+            'description' => "En este episodio les pedimos a los cotorros sus mejores y peores anecdotas de las canciones que dedicaron o les dedicaron",
+            'image' => 'podcast_6_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-12'
+        ]);
+
+        db::table('episodes')->insert([
+            'podcast_id' => 6,
+            'title' => "Anecdortario 90 - Me cerraron la cajuela en la cabeza Ft. La India Yuridia",
+            'description' => "Bienvenido al anecdotario número 90, en este episodio tuvimos invitada de lujo. La India Yuridia!",
+            'image' => 'podcast_6_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-17'
+        ]);
+
+        db::table('episodes')->insert([
+            'podcast_id' => 6,
+            'title' => "Episodio 113 - No sabía que estaba embarazada",
+            'description' => "Bienvenido al episodio numero 113 de la cotorrisa, en este capitulo estamos muy contentos por que rappi se unio a patrocinarnos",
+            'image' => 'podcast_6_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-22'
+        ]);
     }
 }

@@ -28,11 +28,10 @@ class PodcastController extends Controller
 
     public function getPodcast(Request $request, $id) 
     {
-        $podcasts = Podcast::find($id)
-            ->with('category')
-            ->get();
+        $podcast = Podcast::find($id);
+        $podcast['category'] = $podcast->category;
 
-        return $podcasts[0];
+        return $podcast;
     }
 
     /**
