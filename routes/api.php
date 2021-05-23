@@ -46,4 +46,7 @@ Route::prefix('/podcasts')->group(function() {
 
 Route::prefix('/subscriptions')->group(function() {
     Route::get('/{user_id}', [SubscriptionController::class, 'get']);
+    Route::get('/{user_id}/{pod_id}', [SubscriptionController::class, 'isSubscribed']);
+    Route::post('/{user_id}/{pod_id}', [SubscriptionController::class, 'subscribe']);
+    Route::delete('/{user_id}/{pod_id}', [SubscriptionController::class, 'unSubscribe']);
 });

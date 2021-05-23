@@ -26,9 +26,10 @@
                 </div>
 
                 <div class="d-flex flex-row pt-4">
-                    <fill-button>Reproducir Ultimo</fill-button>
+                    <fill-button :onClick='playLast'>Reproducir Ultimo</fill-button>
                     <div style="width: 20px;"></div>
-                    <outline-button>Subscribir</outline-button>
+                    <outline-button 
+                        :onClick="changeSub">{{ isSubscribed ? 'Desuscribirse' : 'Subscribir' }}</outline-button>
                 </div>
 
                 <div class="pod-bar-episodes pt-4 pod-bar-title">
@@ -39,7 +40,7 @@
                     <episode-row 
                         :episode="episode"
                         :episodeNum="episodes.length - index"
-                        playing="true"
+                        :playing="currentPlaying == episode.id"
                         :onClick="() => clickEpisode(episode.id)"></episode-row>
                 </div>
             </div>
@@ -48,7 +49,7 @@
 </template>
 
 <script>
-import {Howl, Howler} from 'howler';
+import { Howl } from 'howler';
 import EpisodeRow from './EpisodeRow.vue';
 import FillButton from './FillButton.vue';
 import OutlineButton from './OutlineButton.vue';
@@ -59,10 +60,13 @@ export default {
         OutlineButton,
         EpisodeRow,
     },
-    data: () => {
+    data() {
         return {
+            isSubscribed: false,
             podcastId: null,
             podcast: null,
+            sound: null,
+            currentPlaying: null,
             episodes: [],
             imgPath: "",
         }
@@ -72,6 +76,29 @@ export default {
         await this.loadPodcast();
     },
     methods: {
+        playLast() {
+            if(this.episodes.length > 0)
+                this.playEpsiode(this.episodes[0]);
+        },
+        playEpsiode(episode) {
+            if(this.sound != null) {
+                try {
+                    this.sound.stop();
+                } catch(e) { }
+            }
+
+            this.sound = new Howl({
+              src: [this.$asset + "storage/podcasts/" + episode.audio]
+            });
+
+            this.sound.play();
+
+            this.currentPlaying = episode.id;
+        },
+        stop() {
+            this.sound?.stop();
+            this.currentPlaying = null;
+        },
         parseUrl() {
             const url = window.location.href; 
 
@@ -80,6 +107,9 @@ export default {
             this.podcastId = elements[elements.length - 1];
         },
         async loadPodcast() {
+            const subRes = await axios.get(`/api/subscriptions/${this.$user.id}/${this.podcastId}/`);
+            this.isSubscribed = subRes.data.length > 0;
+
             const res = await axios.get(`/api/podcasts/${this.podcastId}/episodes`);
 
             this.podcast = res.data;
@@ -92,13 +122,28 @@ export default {
 
             for(var episode of this.episodes) {
                 if(episode.id == id) {
-                    var sound = new Howl({
-                      src: [this.$asset + "storage/podcasts/" + episode.audio]
-                    });
-
-                    sound.play();
+                    if(this.currentPlaying == id)
+                        this.stop();
+                    else
+                        this.playEpsiode(episode);
                 }
             }
+        },
+        changeSub() {
+            if(this.isSubscribed)
+                this.unSubscribe();
+            else
+                this.subscribe();
+        },
+        async subscribe() {
+            await axios.post(`/api/subscriptions/${this.$user.id}/${this.podcastId}/`);
+
+            this.isSubscribed = true;
+        },
+        async unSubscribe() {
+            await axios.delete(`/api/subscriptions/${this.$user.id}/${this.podcastId}/`);
+
+            this.isSubscribed = false;
         }
     }
 }

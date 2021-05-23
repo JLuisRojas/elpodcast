@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="d-flex flex-row align-items-center pt-2 pb-4">
-                        <fill-button v-if="playing" :onClick="onClick">
+                        <fill-button v-if="!playing" :onClick="onClick">
                            Reproducir 
                         </fill-button>
                         <outline-button v-else :onClick="onClick">

@@ -3624,6 +3624,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -3636,8 +3637,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
+      isSubscribed: false,
       podcastId: null,
       podcast: null,
+      sound: null,
+      currentPlaying: null,
       episodes: [],
       imgPath: ""
     };
@@ -3664,6 +3668,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }))();
   },
   methods: {
+    playLast: function playLast() {
+      if (this.episodes.length > 0) this.playEpsiode(this.episodes[0]);
+    },
+    playEpsiode: function playEpsiode(episode) {
+      if (this.sound != null) {
+        try {
+          this.sound.stop();
+        } catch (e) {}
+      }
+
+      this.sound = new howler__WEBPACK_IMPORTED_MODULE_1__.Howl({
+        src: [this.$asset + "storage/podcasts/" + episode.audio]
+      });
+      this.sound.play();
+      this.currentPlaying = episode.id;
+    },
+    stop: function stop() {
+      var _this$sound;
+
+      (_this$sound = this.sound) === null || _this$sound === void 0 ? void 0 : _this$sound.stop();
+      this.currentPlaying = null;
+    },
     parseUrl: function parseUrl() {
       var url = window.location.href;
       var elements = url.split('/');
@@ -3673,21 +3699,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var res;
+        var subRes, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.get("/api/podcasts/".concat(_this2.podcastId, "/episodes"));
+                return axios.get("/api/subscriptions/".concat(_this2.$user.id, "/").concat(_this2.podcastId, "/"));
 
               case 2:
+                subRes = _context2.sent;
+                _this2.isSubscribed = subRes.data.length > 0;
+                _context2.next = 6;
+                return axios.get("/api/podcasts/".concat(_this2.podcastId, "/episodes"));
+
+              case 6:
                 res = _context2.sent;
                 _this2.podcast = res.data;
                 _this2.episodes = _this2.podcast.episodes.reverse();
                 _this2.imgPath = _this2.$asset + "storage/podcasts/" + _this2.podcast.image;
 
-              case 6:
+              case 10:
               case "end":
                 return _context2.stop();
             }
@@ -3706,10 +3738,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           var episode = _step.value;
 
           if (episode.id == id) {
-            var sound = new howler__WEBPACK_IMPORTED_MODULE_1__.Howl({
-              src: [this.$asset + "storage/podcasts/" + episode.audio]
-            });
-            sound.play();
+            if (this.currentPlaying == id) this.stop();else this.playEpsiode(episode);
           }
         }
       } catch (err) {
@@ -3717,6 +3746,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } finally {
         _iterator.f();
       }
+    },
+    changeSub: function changeSub() {
+      if (this.isSubscribed) this.unSubscribe();else this.subscribe();
+    },
+    subscribe: function subscribe() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.post("/api/subscriptions/".concat(_this3.$user.id, "/").concat(_this3.podcastId, "/"));
+
+              case 2:
+                _this3.isSubscribed = true;
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    unSubscribe: function unSubscribe() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return axios["delete"]("/api/subscriptions/".concat(_this4.$user.id, "/").concat(_this4.podcastId, "/"));
+
+              case 2:
+                _this4.isSubscribed = false;
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
     }
   }
 });
@@ -46389,7 +46465,7 @@ var render = function() {
               "div",
               { staticClass: "d-flex flex-row align-items-center pt-2 pb-4" },
               [
-                _vm.playing
+                !_vm.playing
                   ? _c("fill-button", { attrs: { onClick: _vm.onClick } }, [
                       _vm._v(
                         "\n                       Reproducir \n                    "
@@ -47031,11 +47107,17 @@ var render = function() {
                 "div",
                 { staticClass: "d-flex flex-row pt-4" },
                 [
-                  _c("fill-button", [_vm._v("Reproducir Ultimo")]),
+                  _c("fill-button", { attrs: { onClick: _vm.playLast } }, [
+                    _vm._v("Reproducir Ultimo")
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticStyle: { width: "20px" } }),
                   _vm._v(" "),
-                  _c("outline-button", [_vm._v("Subscribir")])
+                  _c("outline-button", { attrs: { onClick: _vm.changeSub } }, [
+                    _vm._v(
+                      _vm._s(_vm.isSubscribed ? "Desuscribirse" : "Subscribir")
+                    )
+                  ])
                 ],
                 1
               ),
@@ -47061,7 +47143,7 @@ var render = function() {
                       attrs: {
                         episode: episode,
                         episodeNum: _vm.episodes.length - index,
-                        playing: "true",
+                        playing: _vm.currentPlaying == episode.id,
                         onClick: function() {
                           return _vm.clickEpisode(episode.id)
                         }

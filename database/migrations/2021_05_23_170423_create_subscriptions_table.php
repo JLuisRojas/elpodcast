@@ -14,6 +14,7 @@ class CreateSubscriptionsTable extends Migration
     public function up()
     {
         Schema::create('subscriptions', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('podcast_id');
             $table->unsignedBigInteger('user_id');
             $table->date('date');
