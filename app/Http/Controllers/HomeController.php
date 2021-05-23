@@ -35,4 +35,8 @@ class HomeController extends Controller
     public function subscriptions() {
         return view('subscriptions');
     }
+
+    public function podcast($id) {
+        return view('podcast');
+    }
 }

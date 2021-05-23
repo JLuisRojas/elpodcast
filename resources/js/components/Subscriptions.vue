@@ -19,7 +19,7 @@
             <div v-for="sub in subs" v-bind:key="sub.podcast_id" class="pods">
                 <podcast-row 
                     :podcast="sub.podcast"
-                    :primary="{ onTap: () => hola(podcast.id), title: 'Ir a Podcast' }"
+                    :primary="{ onTap: () => hola(sub.podcast.id), title: 'Ir a Podcast' }"
                 ></podcast-row>
             </div>
         </div>
@@ -58,6 +58,7 @@ export default {
         },
         hola(id) {
             console.log(id);
+            window.location.href = "/podcast/" + id;
         },
         goEdit(id) {
             window.location.href = `/creator/podcast/${id}`;
