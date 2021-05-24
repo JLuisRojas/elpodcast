@@ -54,7 +54,7 @@ export default {
             this.subs = res.data;
         },
         bescubrir() {
-            window.location.href = "/";
+            window.location.href = "/discover";
         },
         hola(id) {
             console.log(id);

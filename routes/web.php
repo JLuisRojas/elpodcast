@@ -22,6 +22,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name(
 
 Route::get('/subscriptions', [App\Http\Controllers\HomeController::class, 'subscriptions'])->name('subscriptions');
 
+Route::get('/discover', [App\Http\Controllers\HomeController::class, 'discover'])->name('discover');
+
 Route::get('/podcast/{id}', [App\Http\Controllers\HomeController::class, 'podcast'])->name('podcast');
 
 Route::prefix('/creator')->group(function() {

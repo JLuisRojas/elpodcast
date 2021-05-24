@@ -59,6 +59,10 @@ Vue.component('podcast-details', require('./components/PodcastDetails.vue').defa
 
 Vue.component('episode-row', require('./components/EpisodeRow.vue').default);
 
+Vue.component('discover', require('./components/Discover.vue').default);
+
+Vue.component('category-card', require('./components/CategoryCard.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

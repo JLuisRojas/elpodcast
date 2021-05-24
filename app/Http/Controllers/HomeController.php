@@ -36,6 +36,10 @@ class HomeController extends Controller
         return view('subscriptions');
     }
 
+    public function discover() {
+        return view('discover');
+    }
+
     public function podcast($id) {
         return view('podcast');
     }
