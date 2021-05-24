@@ -63,6 +63,8 @@ Vue.component('discover', require('./components/Discover.vue').default);
 
 Vue.component('category-card', require('./components/CategoryCard.vue').default);
 
+Vue.component('category-pods', require('./components/CategoryPods.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

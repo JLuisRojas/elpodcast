@@ -33,6 +33,8 @@ Route::prefix('/creator')->group(function() {
 
 Route::prefix('/podcasts')->group(function() {
     Route::get('/categories', [CategoryController::class, 'index']);
+    Route::get('/categories/{id}', [CategoryController::class, 'get']);
+    Route::get('/categories/{id}/pods', [PodcastController::class, 'queryCategory']);
 
     Route::prefix('/{id}')->group(function() {
         Route::get('', [PodcastController::class, 'getPodcast']);

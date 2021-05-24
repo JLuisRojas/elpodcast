@@ -26,6 +26,16 @@ class PodcastController extends Controller
         return $podcasts;
     }
 
+    public function queryCategory($id) 
+    {
+        $podcasts = Podcast::where('category_id', $id)
+            ->with('category')
+            ->get();
+
+        return $podcasts;
+
+    }
+
     public function getPodcast(Request $request, $id) 
     {
         $podcast = Podcast::find($id);

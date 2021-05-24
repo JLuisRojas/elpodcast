@@ -43,4 +43,8 @@ class HomeController extends Controller
     public function podcast($id) {
         return view('podcast');
     }
+
+    public function category($id) {
+        return view('category');
+    }
 }

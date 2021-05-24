@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="category-card d-flex flex-column">
+  <div v-on:click="goTo()" class="category-card d-flex flex-column">
     <div>
       <img :src="imageUrl" alt="" class="category-image">
     </div>
@@ -26,6 +26,9 @@ export default {
         loadImage() {
             this.imageUrl = this.$asset + "storage/" + this.category.image;
         },
+        goTo() {
+            window.location.href = "/category/" + this.category.id;
+        }
     }
 }
 </script>

@@ -19,6 +19,13 @@ class CategoryController extends Controller
         return $categories;
     }
 
+    public function get($id)
+    {
+        $category = Category::find($id);
+
+        return $category;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
