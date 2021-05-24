@@ -65,6 +65,10 @@ Vue.component('category-card', require('./components/CategoryCard.vue').default)
 
 Vue.component('category-pods', require('./components/CategoryPods.vue').default);
 
+Vue.component('query-pods', require('./components/QueryPods.vue').default);
+
+Vue.component('search-bar', require('./components/SearchBar.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

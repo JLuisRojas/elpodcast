@@ -36,6 +36,18 @@ class PodcastController extends Controller
 
     }
 
+    public function queryPods(Request $request) 
+    {
+        $search = $request->input('search');
+
+        $podcasts = Podcast::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->get();
+
+        return $podcasts;
+
+    }
+
     public function getPodcast(Request $request, $id) 
     {
         $podcast = Podcast::find($id);

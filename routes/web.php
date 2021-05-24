@@ -28,6 +28,8 @@ Route::get('/podcast/{id}', [App\Http\Controllers\HomeController::class, 'podcas
 
 Route::get('/category/{id}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
 
+Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
+
 Route::prefix('/creator')->group(function() {
     Route::get('', [CreatorController::class, 'index'])->name('creator');
     Route::get('/newPodcast', [CreatorController::class, 'newPodcast']);

@@ -47,4 +47,8 @@ class HomeController extends Controller
     public function category($id) {
         return view('category');
     }
+
+    public function search() {
+        return view('search');
+    }
 }

@@ -1,16 +1,8 @@
 <template>
     <div class="container">
-        <div class="row justify-content-between">
-            <div class="col search-title" style="max-width: 60%">
-                Buscar
-            </div>
-        </div>
 
-        <div class="input-group">
-          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-            aria-describedby="search-addon" />
-          <outline-button :onClick="search">Buscar</outline-button>
-        </div>
+        <search-bar></search-bar>
+
 
         <div class="row justify-content-between pt-4">
             <div class="col section-title" style="max-width: 60%">
@@ -31,6 +23,7 @@ import CategoryCard from './CategoryCard.vue';
 import FillButton from "./FillButton"
 import OutlineButton from './OutlineButton.vue';
 import PodcastRow from './PodcastRow.vue';
+import SearchBar from './SearchBar.vue';
 
 export default {
     components: {
@@ -38,19 +31,17 @@ export default {
         OutlineButton,
         PodcastRow,
         CategoryCard,
+        SearchBar,
     },
     data: () => {
         return {
-            categories: []
+            categories: [],
         }
     },
     created() {
         this.loadCategories();
     },
     methods: {
-        search() {
-
-        },
         loadCategories() {
             axios.get('/api/podcasts/categories').then((r) => {
                 const data = r.data;

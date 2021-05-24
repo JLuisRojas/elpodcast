@@ -36,6 +36,8 @@ Route::prefix('/podcasts')->group(function() {
     Route::get('/categories/{id}', [CategoryController::class, 'get']);
     Route::get('/categories/{id}/pods', [PodcastController::class, 'queryCategory']);
 
+    Route::post('/search', [PodcastController::class, 'queryPods']);
+
     Route::prefix('/{id}')->group(function() {
         Route::get('', [PodcastController::class, 'getPodcast']);
         Route::post('/episodes', [EpisodeController::class, 'store']);
