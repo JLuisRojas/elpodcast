@@ -11,9 +11,9 @@
 
     <!-- Scripts -->
     <script>
-        window.User = {
-            id: {{ optional(auth()->user())->id }}
-        }
+        window.User = { }
+        window.User.id = "{{ optional(auth()->user())->id }}";
+        window.User.name = "{{ optional(auth()->user())->name }}";
 
         window._asset = '{{ asset('') }}';
     </script>

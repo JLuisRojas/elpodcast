@@ -36,6 +36,15 @@ class PodcastController extends Controller
 
     }
 
+    public function recomendedPodcasts() {
+        $podcastA = Podcast::find(1);
+        $podcastB = Podcast::find(2);
+        $podcastC = Podcast::find(3);
+        $podcastD = Podcast::find(4);
+
+        return array($podcastA, $podcastB, $podcastC, $podcastD);
+    }
+
     public function queryPods(Request $request) 
     {
         $search = $request->input('search');

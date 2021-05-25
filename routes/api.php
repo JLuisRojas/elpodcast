@@ -38,6 +38,8 @@ Route::prefix('/podcasts')->group(function() {
 
     Route::post('/search', [PodcastController::class, 'queryPods']);
 
+    Route::get('/recommended', [PodcastController::class, 'recomendedPodcasts']);
+
     Route::prefix('/{id}')->group(function() {
         Route::get('', [PodcastController::class, 'getPodcast']);
         Route::post('/episodes', [EpisodeController::class, 'store']);

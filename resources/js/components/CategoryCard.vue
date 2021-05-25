@@ -24,6 +24,7 @@ export default {
     },
     methods: {
         loadImage() {
+            console.log(this.$asset);
             this.imageUrl = this.$asset + "storage/" + this.category.image;
         },
         goTo() {
