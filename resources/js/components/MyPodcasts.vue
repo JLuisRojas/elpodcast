@@ -25,7 +25,7 @@
                 <podcast-row 
                     :podcast="podcast"
                     :primary="{ onTap: () => goEdit(podcast.id), title: 'Editar' }"
-                    :secondary="{ onTap: () => hola(podcast.id), title: 'Ir a Podcast' }"
+                    :secondary="{ onTap: () => goPodcast(podcast.id), title: 'Ir a Podcast' }"
                 ></podcast-row>
             </div>
         </div>
@@ -60,8 +60,8 @@ export default {
         newPodcast() {
             window.location.href = "/creator/newPodcast";
         },
-        hola(id) {
-            console.log(id);
+        goPodcast(id) {
+            window.location.href = "/podcast/" + id;
         },
         goEdit(id) {
             window.location.href = `/creator/podcast/${id}`;

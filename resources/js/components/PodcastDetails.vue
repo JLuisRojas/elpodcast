@@ -43,6 +43,12 @@
                         :playing="currentPlaying == episode.id"
                         :onClick="() => clickEpisode(episode.id)"></episode-row>
                 </div>
+
+                <div v-if="episodes.length == 0" class="row justify-content-center py-3">
+                    <div class="text-center">
+                        Este podcast no tiene episodios
+                    </div>
+                </div>
             </div>
         </div>
     </div> 

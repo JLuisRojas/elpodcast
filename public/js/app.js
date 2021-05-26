@@ -3539,8 +3539,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     newPodcast: function newPodcast() {
       window.location.href = "/creator/newPodcast";
     },
-    hola: function hola(id) {
-      console.log(id);
+    goPodcast: function goPodcast(id) {
+      window.location.href = "/podcast/" + id;
     },
     goEdit: function goEdit(id) {
       window.location.href = "/creator/podcast/".concat(id);
@@ -3754,7 +3754,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       if (this.errorsForm.length == 0) {
         var formData = new FormData();
-        formData.append('podcastId', this.podcast.id);
+        var podcastId = this.podcast.id;
+        formData.append('podcastId', podcastId);
         if (this.image != null) formData.append('image', this.image);
         formData.append('audio', this.audio);
         formData.append('title', this.title);
@@ -3765,7 +3766,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }).then(function () {
           console.log('SUCCESS!!');
-          window.location.href = "/creator";
+          window.location.href = "/creator/podcast/" + podcastId;
         })["catch"](function (e) {
           console.log('FAILURE!!');
           console.log(e.response);
@@ -4116,6 +4117,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -47810,11 +47817,7 @@ var render = function() {
         _c("input", {
           ref: "file",
           staticClass: "w-px h-px opacity-0 overflow-hidden absolute",
-          attrs: {
-            type: "file",
-            id: "file-input-select",
-            accept: ".pdf,.jpg,.jpeg,.png"
-          },
+          attrs: { type: "file", id: "file-input-select", accept: ".mp3,.wav" },
           on: { change: _vm.onChange }
         }),
         _vm._v(" "),
@@ -48711,7 +48714,7 @@ var render = function() {
       { staticClass: "row justify-content-center py-5" },
       [
         _c("fill-button", { attrs: { onClick: _vm.createAccount } }, [
-          _vm._v("Inicar Sesion")
+          _vm._v("Inicar Sesión")
         ])
       ],
       1
@@ -48783,7 +48786,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                    Convertirse en creador es totalmente gratis y podras compartir tus ideas con miles de personas.\n                "
+                "\n                    Convertirse en creador es totalmente gratis y podrás compartir tus ideas con miles de personas.\n                "
               )
             ]
           )
@@ -48807,7 +48810,7 @@ var staticRenderFns = [
           },
           [
             _vm._v(
-              "\n            Inicia sesion y encuentra las grandes sorpresas que los podcasts tienen para ti.\n        "
+              "\n            Inicia sesión y encuentra las grandes sorpresas que los podcasts tienen para ti.\n        "
             )
           ]
         )
@@ -48896,7 +48899,7 @@ var render = function() {
                     },
                     secondary: {
                       onTap: function() {
-                        return _vm.hola(podcast.id)
+                        return _vm.goPodcast(podcast.id)
                       },
                       title: "Ir a Podcast"
                     }
@@ -49444,7 +49447,21 @@ var render = function() {
                   ],
                   1
                 )
-              })
+              }),
+              _vm._v(" "),
+              _vm.episodes.length == 0
+                ? _c(
+                    "div",
+                    { staticClass: "row justify-content-center py-3" },
+                    [
+                      _c("div", { staticClass: "text-center" }, [
+                        _vm._v(
+                          "\n                    Este podcast no tiene episodios\n                "
+                        )
+                      ])
+                    ]
+                  )
+                : _vm._e()
             ],
             2
           )
@@ -49481,14 +49498,14 @@ var render = function() {
     [
       _c("div", { staticClass: "col" }, [
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-2" }, [
+          _c("div", { staticClass: "col-2 " }, [
             _c("img", {
               staticClass: "img-preview",
               attrs: { src: _vm.imgPath, alt: "" }
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-auto" }, [
+          _c("div", { staticClass: "col-10 pb-4" }, [
             _c("div", { staticClass: "pod-hosts" }, [
               _vm._v(
                 "\n                    " +

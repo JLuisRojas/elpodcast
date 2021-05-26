@@ -312,7 +312,7 @@ class EpisodeSeeder extends Seeder
         //===========================================================
         
         //===========================================================
-        // The Anthropocene Podcast
+        // La Cotorrisa
 
         DB::table('episodes')->insert([
             'podcast_id' => 6,
@@ -358,5 +358,130 @@ class EpisodeSeeder extends Seeder
             'audio' => 'podcast_1_episode_1_audio.mp3',
             'publish_date' => '2021-05-22'
         ]);
+        
+        //===========================================================
+
+        //===========================================================
+        // Leyendas Legendarias
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 7,
+            'title' => "Nannie Doss",
+            'description' => "Una mujer que dedicó su vida a buscar como cumplir su fantasía de amor romántico, aun cuando esto implicara tener que matar a su familia para conseguirlo.",
+            'image' => 'podcast_7_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-5'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 7,
+            'title' => "Leonarda Cianciulli",
+            'description' => "Cuando Leonarda quedó viuda, se aferró a sus hijos, especialmente a Giussepe.",
+            'image' => 'podcast_7_episode_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-12'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 7,
+            'title' => "Theresa Knorr",
+            'description' => "Una mujer narcisista y abusiva que después de múltiples matrimonios fallidos a causa de su conducta destructiva",
+            'image' => 'podcast_7_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-19'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 7,
+            'title' => "Gertrude Baniszewski",
+            'description' => "Cuando el padre de Sylvia y Jenny Lykens dejó encargadas a sus hijas con una vecina mientras salía de viaje de trabajo",
+            'image' => 'podcast_7_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-26'
+        ]);
+        
+        //===========================================================
+
+        //===========================================================
+        // El Dollop
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 8,
+            'title' => "El Asesinato de Maximum John (con Felipe Esparza)",
+            'description' => "Un abogado de El Paso, TX., se vio involucrado con el trafico de drogas",
+            'image' => 'podcast_8_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-3'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 8,
+            'title' => "James Sullivan y las Olimpiadas de 1904",
+            'description' => "La historia de los juegos olimpicos mas extraños desde que se reinstauraron las olimpiadas en 1896",
+            'image' => 'podcast_8_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-10'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 8,
+            'title' => "Garrett Morgan: El Hombre de la Mascara de Gas",
+            'description' => "Uno de los inventores mas importantes de la historia tuvo que luchar contra el racismo para poder vender sus inventos.",
+            'image' => 'podcast_8_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-17'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 8,
+            'title' => "La Guerra de Dojos en Chicago",
+            'description' => 'Conde Dante, el "Hombre mas Mortifero del Mundo"',
+            'image' => 'podcast_8_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-24'
+        ]);
+
+        //===========================================================
+
+        //===========================================================
+        // Emprendeduros
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 9,
+            'title' => "¿A QUE EMPRESA DE ROBOTICA LE VAMOS A INVERTIR?",
+            'description' => "En el episodio de hoy Rodrigo y Alejandro nos dan una actualizacion del mercado",
+            'image' => 'podcast_9_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-1'
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 9,
+            'title' => "CRYPTOS VS ACCIONES ¿DONDE INVERTIR?",
+            'description' => "Nos cuentan de las ultimas tendencias de inversion de los inversionistas privados.",
+            'image' => 'podcast_9_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-8',
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 9,
+            'title' => "ELON MUSK VS BITCOIN",
+            'description' => "Hablan de las criptomonedas, de lo que dijo Elon Musk y Tesla",
+            'image' => 'podcast_9_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-15',
+        ]);
+
+        DB::table('episodes')->insert([
+            'podcast_id' => 9,
+            'title' => "¿QUIEN ESTA MANIPULANDO EL MERCADO DE CRYPTO?",
+            'description' => "Platican de la volatilidad actual del mercado, los resultados de los minoristas",
+            'image' => 'podcast_9_image.jpg',
+            'audio' => 'podcast_1_episode_1_audio.mp3',
+            'publish_date' => '2021-05-22',
+        ]);
+
+        //===========================================================
     }
 }

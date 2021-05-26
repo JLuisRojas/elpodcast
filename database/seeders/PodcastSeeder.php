@@ -81,5 +81,38 @@ class PodcastSeeder extends Seeder
             'long_description' => 'Ricardo Perez y Slobotzky se ponen a cotorrear como siempre, pero ahora lo están grabando. Escuchalos todos los miercoles hablando de noticias extrañas, datos curiosos, anecdotas hilarantes y aliviana el ombligo de la semana.',
             'image' => 'podcast_6_image.jpg',
         ]);
+
+        // Leyendas Legendarias
+        DB::table('podcasts')->insert([
+            'user_id' => 2,
+            'category_id' => 3,
+            'hosts' => 'Jose Antonio Badia y Eduardo Espinosa',
+            'title' => 'Leyendas Legendarias',
+            'short_description' => 'Un podcast de comedia donde cada semana exploraremos historias de asesinos en serie, fantasmas y eventos historicos peculiares, notorios o fantasticos.',
+            'long_description' => 'Un podcast de comedia donde cada semana exploraremos historias de asesinos en serie, fantasmas y eventos historicos peculiares, notorios o fantasticos.',
+            'image' => 'podcast_7_image.jpg',
+        ]);
+
+        // El Dollop
+        DB::table('podcasts')->insert([
+            'user_id' => 2,
+            'category_id' => 6,
+            'hosts' => 'Jose Antonio Badia y Eduardo Espinosa',
+            'title' => 'El Dollop',
+            'short_description' => 'Eduardo Espinosa y Jose Antonio Badia toman un suceso historico americano y lo examinan.',
+            'long_description' => 'Eduardo Espinosa y Jose Antonio Badia toman un suceso historico americano y lo examinan.',
+            'image' => 'podcast_8_image.jpg',
+        ]);
+
+        // Los Emprendeduros
+        DB::table('podcasts')->insert([
+            'user_id' => 2,
+            'category_id' => 2,
+            'hosts' => 'Alejandro Salomon y Rodrigo Navarro',
+            'title' => 'Emprendeduros',
+            'short_description' => 'Una conversacion para aprender de negocios, la economia, finanzas y mucho mas',
+            'long_description' => 'Una conversacion para aprender de negocios, la economia, finanzas y mucho mas',
+            'image' => 'podcast_9_image.jpg',
+        ]);
     }
 }

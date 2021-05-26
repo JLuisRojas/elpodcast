@@ -157,7 +157,9 @@ export default {
             if(this.errorsForm.length == 0) {
                 let formData = new FormData();
 
-                formData.append('podcastId', this.podcast.id);
+                const podcastId = this.podcast.id;
+
+                formData.append('podcastId', podcastId);
 
                 if(this.image != null)
                     formData.append('image', this.image);
@@ -176,7 +178,7 @@ export default {
                     }
                 ).then(function () {
                     console.log('SUCCESS!!');
-                    window.location.href = "/creator";
+                    window.location.href = "/creator/podcast/" + podcastId;
                 })
                 .catch(function (e) {
                     console.log('FAILURE!!');

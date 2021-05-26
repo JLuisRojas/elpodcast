@@ -51,7 +51,7 @@ class EpisodeController extends Controller
     {
         $podcastId = request("podcastId");
 
-        $podcast = Podcast::find($podcastId)->get()[0];
+        $podcast = Podcast::find($podcastId);
 
         $episode = new Episode();
 

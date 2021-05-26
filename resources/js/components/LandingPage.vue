@@ -25,7 +25,7 @@
                     Las mejores herramientas para creadores de contenido
                 </div>
                 <div class="row feature-des" style="max-width: 100%;">
-                    Convertirse en creador es totalmente gratis y podras compartir tus ideas con miles de personas.
+                    Convertirse en creador es totalmente gratis y podrás compartir tus ideas con miles de personas.
                 </div>
             </div>
         </div>
@@ -33,11 +33,11 @@
 
     <div class="row justify-content-center feature-sep">
         <div class="feature-title text-center" style="max-width: 60%">
-            Inicia sesion y encuentra las grandes sorpresas que los podcasts tienen para ti.
+            Inicia sesión y encuentra las grandes sorpresas que los podcasts tienen para ti.
         </div>
     </div>
     <div class="row justify-content-center py-5">
-        <fill-button :onClick="createAccount">Inicar Sesion</fill-button>
+        <fill-button :onClick="createAccount">Inicar Sesión</fill-button>
     </div>
 </div>
 </template>

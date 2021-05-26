@@ -18,7 +18,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->middleware('auth')->name('home');
 
 Route::get('/subscriptions', [App\Http\Controllers\HomeController::class, 'subscriptions'])->middleware('auth')->name('subscriptions');
 

@@ -11,7 +11,7 @@
                 id="file-input-select" 
                 class="w-px h-px opacity-0 overflow-hidden absolute" 
                 @change="onChange" 
-                ref="file" accept=".pdf,.jpg,.jpeg,.png" 
+                ref="file" accept=".mp3,.wav" 
             />
       
             <div class="text-center">

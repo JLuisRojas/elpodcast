@@ -2,10 +2,10 @@
     <div class="row justify-content-between border-bottom">
         <div class="col">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 ">
                     <img :src="imgPath" alt="" class="img-preview">
                 </div>
-                <div class="col-auto">
+                <div class="col-10 pb-4" style="">
                     <div class="pod-hosts">
                         {{ podcast.hosts }}
                     </div>

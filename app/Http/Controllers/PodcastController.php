@@ -7,16 +7,6 @@ use App\Models\Podcast;
 
 class PodcastController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     public function queryCreator(Request $request, $id) 
     {
         $podcasts = Podcast::where('user_id', $id)
@@ -37,7 +27,7 @@ class PodcastController extends Controller
     }
 
     public function recomendedPodcasts() {
-        $podcastA = Podcast::find(1);
+        $podcastA = Podcast::find(7);
         $podcastB = Podcast::find(2);
         $podcastC = Podcast::find(3);
         $podcastD = Podcast::find(4);
@@ -97,28 +87,6 @@ class PodcastController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -147,16 +115,5 @@ class PodcastController extends Controller
         $podcast->save();
 
         return $podcast;
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
