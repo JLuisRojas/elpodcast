@@ -91,8 +91,11 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
+        <main class="pt-4">
+            <div id="content-wrap">
+                @yield('content')
+            </div>
+            @include('layouts.footer')
         </main>
     </div>
 </body>

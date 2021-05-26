@@ -10005,8 +10005,29 @@ h3 {
 body {
   color: black;
   background-color: white;
+  height: 100%;
 }
 
+/* Trick: */
+#app {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;
+  /* Footer height */
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  height: 2.5rem;
+  /* Footer height */
+}
+
+/*============*/
 #app {
   padding: 0px 3%;
 }

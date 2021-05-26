@@ -20,11 +20,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
-Route::get('/subscriptions', [App\Http\Controllers\HomeController::class, 'subscriptions'])->name('subscriptions');
+Route::get('/subscriptions', [App\Http\Controllers\HomeController::class, 'subscriptions'])->middleware('auth')->name('subscriptions');
 
 Route::get('/discover', [App\Http\Controllers\HomeController::class, 'discover'])->name('discover');
 
-Route::get('/podcast/{id}', [App\Http\Controllers\HomeController::class, 'podcast'])->name('podcast');
+Route::get('/podcast/{id}', [App\Http\Controllers\HomeController::class, 'podcast'])->middleware('auth')->name('podcast');
 
 Route::get('/category/{id}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
 

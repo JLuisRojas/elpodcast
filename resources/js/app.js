@@ -75,6 +75,8 @@ Vue.component('podcast-card', require('./components/PodcastCard.vue').default);
 
 Vue.component('popular-card', require('./components/PopularCard.vue').default);
 
+Vue.component('landing-page', require('./components/LandingPage.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
