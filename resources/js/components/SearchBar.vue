@@ -5,7 +5,7 @@
         v-model="query"
         id="searchInput"
         type="search" 
-        class="form-control rounded" 
+        class="search-bar form-control rounded" 
         placeholder="Search"
         aria-label="Search"
         aria-describedby="search-addon" />

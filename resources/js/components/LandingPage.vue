@@ -48,7 +48,7 @@ export default {
   components: { FillButton },
   methods: {
     createAccount() {
-
+        window.location.href = "/login";
     }
   }
 
