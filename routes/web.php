@@ -41,3 +41,5 @@ Route::prefix('/creator')->group(function() {
         Route::get('/edit', [CreatorController::class, 'editPodcastInfo']);
     });
 });
+
+Route::get('/report', [App\Http\Controllers\ReportController::class, 'generate']);

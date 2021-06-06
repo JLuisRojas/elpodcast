@@ -74,13 +74,13 @@
             LINKS
           </h6>
           <p>
+            <a href="/report" class="text-reset">Reporte</a>
+          </p>
+          <p>
             <a href="/discover" class="text-reset">Descubrir</a>
           </p>
           <p>
             <a href="/creator" class="text-reset">Creadores</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Ayuda</a>
           </p>
           <p>
             <a href="#!" class="text-reset">Github</a>

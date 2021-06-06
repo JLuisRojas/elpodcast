@@ -18,4 +18,14 @@ class Podcast extends Model
     {
         return $this->hasMany(Episode::class, 'podcast_id', 'id');
     }
+
+    public function subs() 
+    {
+        return $this->hasMany(Subscription::class, 'podcast_id', 'id');
+    }
+
+    public function numSubs() 
+    {
+        return count($this->subs);
+    }
 }
